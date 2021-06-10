@@ -1,0 +1,39 @@
+---
+- name : supported distros
+  hosts : all
+  become : true
+  vars :
+   supported_distros :
+     RedHat
+     Amazon
+     Ubuntu
+     CentOS
+  tasks :
+  - name : removing httpd
+    yum :
+     name : httpd
+     state : removed
+  - name : installing httpd
+    yum :
+     name : httpd
+     state : latest
+    when : ansible_distribution in supported_distros
+  - service :
+     name : httpd
+     state : started
+    when : ansible_distribution in supported_distros
+  - name : copying index.html file
+    copy :
+     src : /home/ec2-user/index.html
+     dest : /var/www/html/index.html
+    notify :
+      - restart_httpd
+  - command : systemctl is-active httpd
+    register : result
+  - debug :
+     msg : "{{ result.stdout }}"
+  handlers :
+  - name : restart_httpd
+    service :
+     name  : httpd
+     state : restarted
