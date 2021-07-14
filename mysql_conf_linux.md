@@ -1,12 +1,12 @@
-Install Mysql Package =>
+<p>1. Install Mysql Package</p>
 sudo yum install https://dev.mysql.com/get/mysql80-community-release-el7-3.noarch.rpm
 
-Install EPEL =>
+<p>Install EPEL</p>
 sudo amazon-linux-extras install epel -y
 
-Install MYSQL =>
+<p>Install MYSQL</p>
 sudo yum install mysql-community-server
 
-Start MYSQL
+<p>Start MYSQL</p>
 sudo systemctl start mysqld
 sudo systemctl enable mysql
