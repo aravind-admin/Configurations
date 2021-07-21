@@ -7,3 +7,16 @@
 <br><br>
 <p>3. Move the file to /url/local/bin</p>
 <code>sudo mv kubectl /usr/local/bin/</code>
+<br><br>
+<br><br>
+<h1>Kind Installation</h1>
+<p>1. Install the Kind Package</p>
+<code>curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.11.1/kind-linux-amd64</code>
+<br><br>
+<p>2. Give the kind file execute permission</p>
+<code>chmod +x kind</code>
+<br><br>
+<p>3. Move the file to /usr/local/bin/</p>
+<code>sudo mv kind /usr/local/bin/</code>
+<br><br>
+<br><br>
