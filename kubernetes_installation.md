@@ -20,3 +20,14 @@
 <code>sudo mv kind /usr/local/bin/</code>
 <br><br>
 <br><br>
+<h1>K3D Installation</h1>
+<p>1. Install the k3d Package</p>
+<code>wget -q -O - https://raw.githubusercontent.com/rancher/k3d/main/install.sh | bash</code>
+<br><br>
+<p>2. Give the k3d file execute permission</p>
+<code>chmod +x k3d</code>
+<br><br>
+<p>3. Move the file to /usr/local/bin/</p>
+<code>sudo mv k3d /usr/local/bin/</code>
+<br><br>
+<br><br>
