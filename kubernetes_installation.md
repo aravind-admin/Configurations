@@ -31,3 +31,19 @@
 <code>sudo mv k3d /usr/local/bin/</code>
 <br><br>
 <br><br>
+
+<h1>minikube Installation</h1>
+<p>1. Install the minikube Package</p>
+<code>curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64</code>
+<br><br>
+<p>2. Give the minikube file execute permission</p>
+<code>chmod +x minikube</code>
+<br><br>
+<p>3. Move the file to /usr/local/bin/</p>
+<code>sudo mv minikube /usr/local/bin/</code>
+<p>4. Start minikube</p>
+<code>minikube start --driver=none</code>
+<p>5. Check minikube status</p>
+<code>minikube status</code>
+<br><br>
+<br><br>
