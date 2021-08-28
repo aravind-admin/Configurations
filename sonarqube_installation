@@ -1,0 +1,48 @@
+========Install and setup Postgresql
+
+amazon-linux-extras | grep postgr
+amazon-linux-extras install postgresql10
+  (or)
+sudo rpm -Uvh https://download.postgresql.org/pub/repos/yum/9.6/redhat/rhel-7-x86_64/pgdg-centos96-9.6-3.noarch.rpm && sudo yum -y install postgresql96-server postgresql96-contrib
+sudo vim /var/lib/pgsql/data/pg_hba.conf
+sudo yum install postgresql-server postgresql-devel -y
+sudo /usr/bin/postgresql-setup initdb
+sudo systemctl enable postgresql
+sudo systemctl start postgresql
+sudo systemctl status postgresql
+
+sudo passwd postgres
+su postgres
+createuser sonarqube
+psql
+[ Database commands ]
+ALTER USER sonarqube_user WITH ENCRYPTED password 'sonarqube_password';
+CREATE DATABASE sonarqube_db OWNER sonarqube_user;
+\q
+
+========Install sonarqube
+
+[ sonarqube version 8.9 'https;//sonarqube.org/downloads/']
+wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-8.9.1.44547.zip
+unzip sonarqube-8.9.1.44547.zip
+
+========Setup /sonar_home/conf/sonar.properties
+
+sonar.jdbc.username=sonarqube
+sonar.jdbc.password=sonarqube
+
+sonar.embeddedDatabase.port=9092
+
+[ In Postgres section ]
+sonar.jdbc.url=jdbc:postgresql://localhost/sonarqube
+
+[ Uncomment and configure ]
+sonar.web.host=0.0.0.0
+sonar.web.context=/sonarqube
+sonar.web.port=9000
+
+sudo yum install java -y
+
+-> setup Java_home_path in "/sonar_home/conf/wrapper.conf"
+
+sonar.sh console
