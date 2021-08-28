@@ -1,3 +1,9 @@
+Setup sonarqube with Postgres :
+https://www.vultr.com/docs/how-to-install-sonarqube-on-centos-7
+
+Install Postgres :
+https://dailyscrawl.com/how-to-install-postgresql-on-amazon-linux-2/
+
 ========Install and setup Postgresql
 
 amazon-linux-extras | grep postgr
