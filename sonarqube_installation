@@ -7,6 +7,7 @@ sudo rpm -Uvh https://download.postgresql.org/pub/repos/yum/9.6/redhat/rhel-7-x8
 sudo vim /var/lib/pgsql/data/pg_hba.conf
 sudo yum install postgresql-server postgresql-devel -y
 sudo /usr/bin/postgresql-setup initdb
+sudo vim /var/lib/pgsql/data/pg_hba.conf
 sudo systemctl enable postgresql
 sudo systemctl start postgresql
 sudo systemctl status postgresql
