@@ -34,4 +34,39 @@ dob={{ my_dob }}
 # End - User Info
 ###############################
 
+#############################
+#
+# Loops
+#
+#############################
+
+- name : Fetching the remote system information
+  hosts : servers
+  become : true
+  tasks :
+  - name :
+    template :
+     src : systeminfo.j2
+     dest : /opt/sysinfo
+
+  - fetch :
+     src : /opt/sysinfo
+     dest : /home/ec2-user
+
+==================================================================================
+J2 TEMPLATE
+==================================================================================
+
+{% for host in groups['remote'] %}
+
+ip_address : {{ hostvars[host]['ansible_facts']['default_ipv4']['address'] }}
+broadcast : {{ hostvars[host]['ansible_facts']['default_ipv4']['broadcast'] }}
+gateway : {{ hostvars[host]['ansible_facts']['default_ipv4']['gateway'] }}
+mac_address : {{ hostvars[host]['ansible_facts']['default_ipv4']['macaddress'] }}
+
+{% endfor %}
+
+############################
+# End - Loops
+############################
 </pre>
